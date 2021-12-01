@@ -68,6 +68,9 @@ Switch(dhcp-config)#dns-server 8.8.8.8 4.4.4.4
 
 copy startup-config tftp Ip adres tftp server
 
+spanning-tree vlan 10 root primary
+
+
 
 
 
