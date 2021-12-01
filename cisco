@@ -1,0 +1,72 @@
+Cisco commands
+
+Telnet :
+telnet werking
+op router: line vty 0 4
+password tcr
+login (login local als er users zijn aangemaakt (bewerkt)
+op pc: telnet <ip adres van apparaat waar je naar wil telnetten>
+
+Enable wachtwoord: 
+line console 0
+password tcr
+login
+GRE Tunnel
+interface Tunnel1 (R2)
+ip address 100.100.100.1 255.255.255.252
+tunnel source <GigabitEthernet0/0>
+tunnel destination <88.1.1.2> exit interface van andere router
+interface Tunnel1
+ip address 100.100.100.2 255.255.255.252
+tunnel source <Serial0/0/1>
+tunnel destination 92.2.2.2 exit interface van andere router
+
+acceslist om dhcp server niet te blokkeren:
+
+permit udp any eq bootpc any eq bootps
+
+Voorbeeld SSH acceslist
+ip access-list extended SSH
+permit tcp 10.0.50.0 0.0.0.255 any eq 22
+deny tcp any any eq 22
+permit ip any any
+
+
+
+
+
+
+Vanaf multilayer switch naar andere switches 
+
+switchport trunk encapsulation dot1q
+switchport mode trunk
+
+No switchport op interface van L3 naar router
+
+L3 switch interface met dhcp server
+
+interface Vlan10
+ip address 10.0.10.254 255.255.255.0
+ip helper-address 10.0.30.1
+
+DCHCP server op multilayer switch 
+
+Om routing aan te zetten op een l3 moet he (ip routing) typen
+
+---- enable SVI -----
+Switch(config)# interface VLAN10
+Switch(config-if)# ip address 192.168.10.1 255.255.255.0
+!---- define the pool name -----
+Switch(config)# ip dhcp pool VLAN10
+!---- specify network-----
+Switch(dhcp-config)#network 192.168.10.0 255.255.255.0
+!---- specify default gateway for subnet-----
+Switch(dhcp-config)#default-router 192.168.10.1
+!---- specify dns servers-----
+Switch(dhcp-config)#dns-server 8.8.8.8 4.4.4.4
+
+
+
+
+
+
