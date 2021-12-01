@@ -66,6 +66,8 @@ Switch(dhcp-config)#default-router 192.168.10.1
 !---- specify dns servers-----
 Switch(dhcp-config)#dns-server 8.8.8.8 4.4.4.4
 
+copy startup-config tftp Ip adres tftp server
+
 
 
 
