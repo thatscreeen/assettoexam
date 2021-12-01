@@ -1,5 +1,9 @@
 Cisco commands
 
+dhcp addres aan interface toevoegen 
+
+IP add dhcp
+
 Telnet :
 telnet werking
 op router: line vty 0 4
